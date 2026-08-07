@@ -25,11 +25,9 @@ requirements:
       then: make
 
 tests:
-  - script:
-      - if: not win
-        then: test -e $PREFIX/include/termcolor/termcolor.hpp
-      - if: win
-        then: if not exist %PREFIX%\Library\include\termcolor\termcolor.hpp exit 1
+  - package_contents:
+      include:
+        - termcolor/termcolor.hpp
 
 about:
   license: BSD-3-Clause
