@@ -1,0 +1,42 @@
+schema_version: 1
+
+context:
+  version: "2.1.0"
+
+package:
+  name: termcolor-cpp
+  version: ${{ version }}
+
+source:
+  url: https://github.com/ikalnytskyi/termcolor/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 435994c32557674469404cb1527c283fdcf45746f7df75fd2996bb200d6a759f
+  patches:
+    - patches/0001-cmake.patch
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - cmake
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+    - if: unix
+      then: make
+
+tests:
+  - package_contents:
+      include:
+        - termcolor/termcolor.hpp
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Header-only C++ library for printing colored messages to the terminal.
+  homepage: https://github.com/ikalnytskyi/termcolor
+
+extra:
+  recipe-maintainers:
+    - JohanMabille
+    - adriendelsalle
+    - jjerphan
