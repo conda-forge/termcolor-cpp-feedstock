@@ -11,7 +11,7 @@ source:
     - patches/0001-cmake.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -35,3 +35,4 @@ extra:
   recipe-maintainers:
     - JohanMabille
     - adriendelsalle
+    - jjerphan
